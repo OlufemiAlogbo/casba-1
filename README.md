@@ -21,3 +21,6 @@ Build a software application that incorporates custom artificial intelligent alg
 
 ### Technology Stack
 - Git
+- Python
+- Flask
+- Bootstrap
