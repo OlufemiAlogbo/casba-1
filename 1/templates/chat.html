@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CASBA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href= "{{ url_for('static',filename='styles/chat.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="{{ url_for('static',filename='scripts/chat.js') }}"></script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>CASBA</h1>
+    </div>
+    <hr>
+    <div class="chat">
+      <div class="conversations" id="conversations">
+
+        <!--div class="message sent">
+          How's the weather
+          <span class="metadata">
+            <div class="time">4:20</div>
+          </span>
+        </div>
+        <div class="message received">
+          It's a sunny day out!
+          <span class="metadata">
+            <div class="time">4:20</div>
+          </span>
+        </div !-->
+
+      </div>
+
+      <div class="compose">
+
+        <div class="row vertical-align">
+          <div class="col-md-10">
+            <input type="text" class="inputChat" id="inputChat" name="inputChat" placeholder="How can I help you?" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="col-sm-2">
+            <button class="send" id="send">
+              <div class="circle">
+                <span class="glyphicon glyphicon-send"></span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

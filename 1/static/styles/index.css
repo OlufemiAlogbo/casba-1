@@ -1,0 +1,35 @@
+h1 {
+  text-align: center;
+  margin-top: 250px;
+}
+
+.engage {
+  text-align: center;
+}
+
+.engage-input {
+  height: 50px;
+}
+
+.btn.engage {
+	background: none;
+	padding: 12px 22px;
+  margin: 20px 0 20px 0;
+}
+
+.btn-primary.engage {
+	border: 2px solid #800300;
+	color: #800300;
+}
+
+.btn-primary.engage:hover, .btn-primary.engage:focus, .btn-primary.engage:active, .btn-primary.engage.active, .open > .dropdown-toggle.btn-primary {
+	color: #ff100a;
+	border-color: #ff100a;
+  background-color: none;
+}
+
+.btn-primary.engage:active, .btn-primary.engage.active {
+	border-color: #800300;
+	color: #800300;
+	box-shadow: none;
+}

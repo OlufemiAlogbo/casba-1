@@ -20,7 +20,12 @@ Build a software application that incorporates custom artificial intelligent alg
 - Mobile application accessed through iOS App store
 
 ### Technology Stack
+#### Version 0: App Initiation
 - Git
 - Python
 - Flask
 - Bootstrap
+#### Version 1: Real-time ChatBot
+- HTML, CSS & JavaScript
+- SocketIO
+- Watson Conversations
