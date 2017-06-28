@@ -14,6 +14,7 @@ Build a software application that incorporates custom artificial intelligent alg
 5. Develop a PFA API that connects with the ChatBot for real-time analytics on budget, savings and investment
 6. Develop ChatBot capability to answer FAQs as listed on major banks website
 7. Develop a dashboard to provides real-time sentiment analysis on ChatBot interactions
+8. Enable the ChatBot with Watson text-to-speech and speech-to-text capability
 
 ## Deliverable
 - Web application accessed through [Josla](http://josla.com.ng/).
