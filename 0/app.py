@@ -1,4 +1,4 @@
-#!flask/bin/python
+import os
 from flask import Flask, render_template, url_for, request, flash
 
 # App config.
@@ -21,5 +21,6 @@ def index():
 def kira():
     return render_template("kira.html")
 
-if __name__ == '__main__':
-    app.run(debug=True)
+port = os.getenv('PORT', '5000')
+if __name__ == "__main__":
+	app.run(host='0.0.0.0', port=int(port))
