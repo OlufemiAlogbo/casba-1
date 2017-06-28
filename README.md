@@ -20,11 +20,13 @@ Build a software application that incorporates custom artificial intelligent alg
 - Mobile application accessed through iOS App store
 
 ### Technology Stack
-#### Version 0: App Initiation
+#### Version 0: Initialise App
 - Git
 - Python
 - Flask
 - Bootstrap
+- Bluemix
+
 #### Version 1: Real-time ChatBot
 - HTML, CSS & JavaScript
 - SocketIO
