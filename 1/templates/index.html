@@ -14,7 +14,10 @@
 <body>
 
   <div class="container">
-    <h1>Cognitive Banking</h1>
+    <div class="brand">
+      <img class="img-responsive" src="{{ url_for('static',filename='images/Logo.png') }}" alt="Brand" width="304" height="236">
+      <h1> CASBA </h1>
+    </div>
     <hr>
     <form class="engage" action="{{ url_for('index') }}" method="post" data-toggle="validator" role="form">
 

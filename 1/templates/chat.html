@@ -16,9 +16,10 @@
 <body>
 
   <div class="container">
-    <div class="header">
-      <h1>CASBA</h1>
-    </div>
+    <a href="{{ url_for('index')}}" class="header">
+      <img class="img-responsive" src="{{ url_for('static',filename='images/Logo.png') }}" alt="Brand" width="152" height="118">
+      <h1> CASBA </h1>
+    </a>
     <hr>
     <div class="chat">
       <div class="conversations" id="conversations">

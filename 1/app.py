@@ -26,13 +26,6 @@ workspace_id = 'f7570f32-c417-41fe-b5b4-c7db19c893d1'
 context = {}
 last_response = ""
 
-response = conversation.message(
-  workspace_id=workspace_id,
-  message_input={'text': 'Hello'},
-  context=context
-)
-context = response["context"]
-
 # Views
 @app.route("/", methods=['GET', 'POST'])
 def index():
