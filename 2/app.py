@@ -91,6 +91,7 @@ def handleMessage(message):
     entity = " "
     form = " "
     bot_response = "...."
+    responseMessage = "...."
     user = "..."
     try:
         context["conversation_id"] = str(hashlib.sha256(session['unique_conversation_id'].encode('utf-8')).hexdigest())
@@ -113,9 +114,21 @@ def handleMessage(message):
 
                 r = flw.bvn.verify(bvn, verifyUsing, country)
                 bvn_response = json.loads("{0}".format(r.text))
-                if len(json.loads(json.dumps(response, indent=2))['output']['text']) != 0:
+                responseMessage = bvn_response["data"]
+                if "Successful" in str(responseMessage["responseMessage"]):
+                    if len(json.loads(json.dumps(response, indent=2))['output']['text']) != 0:
+                        try:
+                            bot_response = ' '.join(response["output"]["text"])
+                        except Exception as ex:
+                            print("exception :( ", ex)
+                elif "Invalid" in str(responseMessage["responseMessage"]):
                     try:
-                        bot_response = ' '.join(response["output"]["text"])
+                        bot_response = "Invalid BVN, Please try again with BVN + space + 11 digit number"
+                    except Exception as ex:
+                        print("exception :( ", ex)
+                else:
+                    try:
+                        bot_response = "Service unavailable, Please try again in 30 mins"
                     except Exception as ex:
                         print("exception :( ", ex)
             else:
@@ -144,10 +157,15 @@ def handleMessage(message):
                     stmt = ibm_db.prepare(conn, sql)
                     param = user["id"], user["bvn"], user["lastName"], user["firstName"], user["phoneNumber"], user["dateOfBirth"], datetime.date.today(),
                     ibm_db.execute(stmt, param)
-                form = "signup"
-                if len(json.loads(json.dumps(response, indent=2))['output']['text']) != 0:
+                    form = "signup"
+                    if len(json.loads(json.dumps(response, indent=2))['output']['text']) != 0:
+                        try:
+                            bot_response = ' '.join(response["output"]["text"])
+                        except Exception as ex:
+                            print("exception :( ", ex)
+                else:
                     try:
-                        bot_response = ' '.join(response["output"]["text"])
+                        bot_response = "OTP not verified! Please start signup again..."
                     except Exception as ex:
                         print("exception :( ", ex)
 

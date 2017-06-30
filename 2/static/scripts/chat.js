@@ -152,7 +152,7 @@ $(document).ready(function(){
         '<input type="text" class="form-control" value= ' + user.phoneNumber + ' autofocus disabled>' +
         '<input type="text" class="form-control" value= ' + user.dateOfBirth + ' autofocus disabled>' +
         '<input type="text" class="form-control" value= ' + user.bvn + ' autofocus disabled>' +
-        '<button class="btn btn-lg btn-primary btn-block" id="signup" type="submit"> Confirm </button>' +
+        '<button class="btn btn-lg btn-primary btn-block btn-engage" id="signup" type="submit"> Confirm </button>' +
       '</div>' +
     '</div>';
 
