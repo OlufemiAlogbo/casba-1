@@ -1,13 +1,12 @@
-CREATE TABLE SIGNUP
-(
-CustomerID int NOT NULL,
-BVN bigint,
-Name varchar(255),
-Email varchar(255),
-Phone varchar(255),
-Password varchar(255),
-DoC DATE,
-Primary Key(CustomerID)
+CREATE TABLE SIGNUP (
+  ID int NOT NULL,
+  bvn bigint,
+  lastName varchar(255),
+  firstName varchar(255),
+  phoneNumber varchar(255),
+  dateOfBirth varchar(255),
+  DoC DATE,
+  Primary Key(ID)
 );
 
-INSERT INTO SIGNUP (CUSTOMERID, BVN, NAME, EMAIL, PHONE, PASSWORD, DOC) VALUES (1, 22182780033, 'Akinlabi Ajelabi', 'akinlabiajelabi@me.com', '08087656435', 'Dinosaurs', DATE ('2017-05-11'));
+INSERT INTO SIGNUP (ID, BVN) VALUES (1, 12345678901);

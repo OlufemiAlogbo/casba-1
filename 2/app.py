@@ -134,6 +134,16 @@ def handleMessage(message):
                 r = flw.bvn.validate(bvn, otp, transactionReference, country)
                 otp_response = json.loads("{0}".format(r.text))
                 user = otp_response["data"]
+                if user["bvn"] != "":
+                    sql = "SELECT * FROM SIGNUP ORDER BY ID DESC fetch first 1 row only"
+                    stmt = ibm_db.exec_immediate(conn, sql)
+                    user["id"] = 1
+                    while ibm_db.fetch_row(stmt) != False:
+                        user["id"] = 1 + int(ibm_db.result(stmt, "ID"))
+                    sql = "INSERT INTO SIGNUP (ID, BVN, LASTNAME, FIRSTNAME, PHONENUMBER, DATEOFBIRTH, DOC) VALUES (?, ?, ?, ?, ?, ?, ?)"
+                    stmt = ibm_db.prepare(conn, sql)
+                    param = user["id"], user["bvn"], user["lastName"], user["firstName"], user["phoneNumber"], user["dateOfBirth"], datetime.date.today(),
+                    ibm_db.execute(stmt, param)
                 form = "signup"
                 if len(json.loads(json.dumps(response, indent=2))['output']['text']) != 0:
                     try:
@@ -153,12 +163,18 @@ def handleMessage(message):
     session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my response', {'data': bot_response, 'intent': intent, 'entity': entity, 'user': user, 'form': form, 'count': session['receive_count']})
 
-    # sql = "INSERT INTO CONVERSATION (ID, MESSAGE, INTENT, TOC) VALUES (?, ?, ?, ?)"
-    # stmt = ibm_db.prepare(conn, sql)
-    # param = str(context["conversation_id"]).encode('ascii', 'ignore').decode('ascii'), str(bot_response).encode('ascii', 'ignore').decode('ascii'), str(intent).encode('ascii', 'ignore').decode('ascii'), str(datetime.datetime.utcnow()).encode('ascii', 'ignore').decode('ascii'),
-    # ibm_db.execute(stmt, param)
+    conversationLog = {'data': bot_response, 'intent': intent, 'entity': entity, 'user': user, 'form': form, 'count': session['receive_count']}
+    if conversationLog["data"] != "":
+        sql = "SELECT * FROM CONVERSATION ORDER BY ID DESC fetch first 1 row only"
+        stmt = ibm_db.exec_immediate(conn, sql)
+        conversationLog["id"] = 1
+        while ibm_db.fetch_row(stmt) != False:
+            conversationLog["id"] = 1 + int(ibm_db.result(stmt, "ID"))
+        sql = "INSERT INTO CONVERSATION (ID, MESSAGE, INTENT, ENTITY, TOC) VALUES (?, ?, ?, ?, ?)"
+        stmt = ibm_db.prepare(conn, sql)
+        param = conversationLog["id"], conversationLog["data"], conversationLog["intent"], conversationLog["entity"], datetime.datetime.utcnow(),
+        ibm_db.execute(stmt, param)
 
-    #conversation_log = pandas.read_sql('SELECT * FROM CONVERSATION', pconn)
 
 port = os.getenv('PORT', '5000')
 if __name__ == "__main__":
