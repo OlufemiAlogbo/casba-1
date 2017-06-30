@@ -18,6 +18,3 @@ Build a software application that incorporates custom artificial intelligent alg
 ## Deliverable
 - Web application accessed through [Josla](http://josla.com.ng/).
 - Mobile application accessed through iOS App store
-
-### Technology Stack
-- Git
