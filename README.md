@@ -10,7 +10,7 @@ Build a software application that incorporates custom artificial intelligent alg
 1. Develop a ChatBot with Watson Conversation API to responds to customer queries
 2. Enable the ChatBot with Flutterwave BVN API for easy sign-up
 3. Enable the ChatBot with Google Maps API for easy access to ATM and branches
-4. Enable the ChatBot with Interswitch Webpay API for payments
+4. Enable the ChatBot with PayStack, WebPay & Flutterwave APIs for payments
 5. Develop a PFA API that connects with the ChatBot for real-time analytics on budget, savings and investment
 6. Develop ChatBot capability to answer FAQs as listed on major banks website
 7. Develop a dashboard to provides real-time sentiment analysis on ChatBot interactions
@@ -32,3 +32,8 @@ Build a software application that incorporates custom artificial intelligent alg
 - HTML, CSS & JavaScript
 - SocketIO
 - Watson Conversations
+
+#### Version 2: Easy sign-up
+- SQL
+- DashDB
+- Flutterwave

@@ -1,0 +1,13 @@
+applications:
+- path: .
+  memory: 128M
+  instances: 1
+  domain: eu-gb.mybluemix.net
+  name: casbaV2
+  host: casbaV2
+  disk_quota: 1024M
+  buildpack: python_buildpack
+
+libraries:
+- name: pycrypto
+  version: "2.6"

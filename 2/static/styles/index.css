@@ -1,0 +1,44 @@
+.brand {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.brand img {
+  margin: 0 auto;
+}
+
+.brand h1 {
+  margin-top: 20px;
+  color: #800300;
+}
+
+.engage {
+  text-align: center;
+}
+
+.engage-input {
+  height: 50px;
+}
+
+.btn.btn-engage {
+	background: none;
+	padding: 12px 22px;
+  margin: 20px 0 20px 0;
+}
+
+.btn-primary.btn-engage {
+	border: 2px solid #800300;
+	color: #800300;
+}
+
+.btn-primary.btn-engage:hover, .btn-primary.btn-engage:focus, .btn-primary.btn-engage:active, .btn-primary.btn-engage.active, .open > .dropdown-toggle.btn-primary {
+	color: #ff100a;
+	border-color: #ff100a;
+  background-color: none;
+}
+
+.btn-primary.btn-engage:active, .btn-primary.btn-engage.active {
+	border-color: #800300;
+	color: #800300;
+	box-shadow: none;
+}

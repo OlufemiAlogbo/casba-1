@@ -1,0 +1,233 @@
+/* unvisited link */
+a:link {
+    color: #800300;
+}
+
+/* visited link */
+a:visited {
+    color: #800300;
+}
+
+/* mouse over link */
+a:hover {
+    color: #800300;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: #800300;
+}
+
+.header {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.header img {
+  margin: 0 auto;
+}
+
+.header h1 {
+  margin-top: 2px;
+}
+
+.chat {
+  min-height: calc(100vh - 150px - 100px);
+  background-color: #ccc;
+  padding: 25px;
+  margin: 20px auto;
+  box-shadow: 0 3px #fff;
+}
+
+.conversations {
+  padding: 10px;
+  width: 100%;
+  height: calc(100vh - 150px - 100px - 120px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.conversations::-webkit-scrollbar {
+  width: 10px;
+}
+
+.conversations::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(0, 0, 0, .1);
+}
+
+.message {
+  clear: both;
+  margin-bottom: 10px;
+  max-width: 85%;
+  word-wrap: break-word;
+  z-index: -1;
+  padding: 15px;
+  margin: 5px 10px 0;
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 18px;
+  font-size: 15px;
+}
+
+.metadata {
+  display: inline-block;
+  float: right;
+  padding: 0 0 0 7px;
+  position: relative;
+  bottom: -4px;
+}
+
+.metadata .time {
+  color: rgba(0, 61, 128, .45);
+  font-size: 11px;
+  display: inline-block;
+}
+
+.message.received {
+  background: #fff;
+  color: #800300;
+  border-radius: 0px 5px 5px 5px;
+  float: left;
+}
+
+.message.received .metadata {
+  padding: 0 0 0 16px;
+}
+
+.message.sent {
+  background: #800300;
+  color: #fff;
+  border-radius: 5px 0px 5px 5px;
+  float: right;
+}
+
+.compose {
+  margin-top: 20px;
+  height: 50px;
+}
+
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;     /* Align the flex-items vertically */
+  justify-content: center; /* Optional, to align inner flex-items
+                              horizontally within the column  */
+}
+
+.compose .inputChat {
+  background: #fff;
+  height: 50px;
+  min-width: 100%;
+  padding: 15px;
+}
+
+.compose .send {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  margin: 5px auto;
+  padding: 0;
+  position: relative;
+  outline: none;
+}
+
+.compose .send .circle {
+  background: #800300;
+  border-radius: 50%;
+  color: #fff;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compose .send .circle span {
+  font-size: 24px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-signin-heading {
+  margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form-signin input[value="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.account-wall {
+  margin-top: 20px;
+  padding: 40px 0px 20px 0px;
+  background-color: #f7f7f7;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-title {
+  color: #555;
+  font-size: 18px;
+  font-weight: 400;
+  display: block;
+}
+
+.profile-img {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+
+/* Extra small devices (767px and down) */
+@media (max-width: 767px) {
+    .row.vertical-align {
+        display: block; /* Turn off the flexible box layout */
+    }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .row.vertical-align {
+        display: flex;
+        align-items: center;
+    }
+}
