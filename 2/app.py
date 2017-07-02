@@ -131,43 +131,49 @@ def handleMessage(message):
                         bot_response = "Service unavailable, Please try again in 30 mins"
                     except Exception as ex:
                         print("exception :( ", ex)
-            else:
-                if len(json.loads(json.dumps(response, indent=2))['output']['text']) != 0:
-                    try:
-                        bot_response = ' '.join(response["output"]["text"])
-                    except Exception as ex:
-                        print("exception :( ", ex)
-        else:
-            if len(json.loads(json.dumps(response, indent=2))['context']['otp']) == 5:
-                bvn = str(json.loads(json.dumps(response, indent=2))['context']['bvn'].split()[1])
-                otp = str(json.loads(json.dumps(response, indent=2))['context']['otp'])
-                transactionReference = str(bvn_response["data"]["transactionReference"])
-                country = "NGN"
+            elif len(json.loads(json.dumps(response, indent=2))['entities'][0]['value']) == 5:
+                if len(json.loads(json.dumps(response, indent=2))['context']['otp']) == 5:
+                    print json.loads(json.dumps(response, indent=2))['context']['otp']
+                    bvn = str(json.loads(json.dumps(response, indent=2))['context']['bvn'].split()[1])
+                    otp = str(json.loads(json.dumps(response, indent=2))['context']['otp'])
+                    transactionReference = str(bvn_response["data"]["transactionReference"])
+                    country = "NGN"
 
-                r = flw.bvn.validate(bvn, otp, transactionReference, country)
-                otp_response = json.loads("{0}".format(r.text))
-                user = otp_response["data"]
-                if user["bvn"] != "":
-                    sql = "SELECT * FROM SIGNUP ORDER BY ID DESC fetch first 1 row only"
-                    stmt = ibm_db.exec_immediate(conn, sql)
-                    user["id"] = 1
-                    while ibm_db.fetch_row(stmt) != False:
-                        user["id"] = 1 + int(ibm_db.result(stmt, "ID"))
-                    sql = "INSERT INTO SIGNUP (ID, BVN, LASTNAME, FIRSTNAME, PHONENUMBER, DATEOFBIRTH, DOC) VALUES (?, ?, ?, ?, ?, ?, ?)"
-                    stmt = ibm_db.prepare(conn, sql)
-                    param = user["id"], user["bvn"], user["lastName"], user["firstName"], user["phoneNumber"], user["dateOfBirth"], datetime.date.today(),
-                    ibm_db.execute(stmt, param)
-                    form = "signup"
-                    if len(json.loads(json.dumps(response, indent=2))['output']['text']) != 0:
+                    r = flw.bvn.validate(bvn, otp, transactionReference, country)
+                    otp_response = json.loads("{0}".format(r.text))
+                    user = otp_response["data"]
+                    if user["bvn"] != "":
+                        sql = "SELECT * FROM SIGNUP ORDER BY ID DESC fetch first 1 row only"
+                        stmt = ibm_db.exec_immediate(conn, sql)
+                        user["id"] = 1
+                        while ibm_db.fetch_row(stmt) != False:
+                            user["id"] = 1 + int(ibm_db.result(stmt, "ID"))
+                        sql = "INSERT INTO SIGNUP (ID, BVN, LASTNAME, FIRSTNAME, PHONENUMBER, DATEOFBIRTH, DOC) VALUES (?, ?, ?, ?, ?, ?, ?)"
+                        stmt = ibm_db.prepare(conn, sql)
+                        param = user["id"], user["bvn"], user["lastName"], user["firstName"], user["phoneNumber"], user["dateOfBirth"], datetime.date.today(),
+                        ibm_db.execute(stmt, param)
+                        form = "signup"
+                        if len(json.loads(json.dumps(response, indent=2))['output']['text']) != 0:
+                            try:
+                                bot_response = ' '.join(response["output"]["text"])
+                            except Exception as ex:
+                                print("exception :( ", ex)
+                    else:
                         try:
-                            bot_response = ' '.join(response["output"]["text"])
+                            bot_response = "OTP not verified! Please start signup again..."
                         except Exception as ex:
                             print("exception :( ", ex)
                 else:
                     try:
-                        bot_response = "OTP not verified! Please start signup again..."
+                        bot_response = "OTP must be 5 digits! Please start signup again..."
                     except Exception as ex:
                         print("exception :( ", ex)
+        else:
+            if len(json.loads(json.dumps(response, indent=2))['output']['text']) != 0:
+                try:
+                    bot_response = ' '.join(response["output"]["text"])
+                except Exception as ex:
+                    print("exception :( ", ex)
 
     except Exception as ex:
         print("watson exception :( ", ex)
