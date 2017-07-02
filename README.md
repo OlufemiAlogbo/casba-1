@@ -37,7 +37,3 @@ Build a software application that incorporates custom artificial intelligent alg
 - SQL
 - DashDB
 - Flutterwave
-
-#### Version 3: Access Funds
-- Google Maps
-- R

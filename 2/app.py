@@ -131,6 +131,12 @@ def handleMessage(message):
                         bot_response = "Service unavailable, Please try again in 30 mins"
                     except Exception as ex:
                         print("exception :( ", ex)
+            elif json.loads(json.dumps(response, indent=2))['entities'][0]['entity'] == "bool":
+                if len(json.loads(json.dumps(response, indent=2))['output']['text']) != 0:
+                    try:
+                        bot_response = ' '.join(response["output"]["text"])
+                    except Exception as ex:
+                        print("exception :( ", ex)
             elif len(json.loads(json.dumps(response, indent=2))['entities'][0]['value']) == 5:
                 if len(json.loads(json.dumps(response, indent=2))['context']['otp']) == 5:
                     print json.loads(json.dumps(response, indent=2))['context']['otp']
