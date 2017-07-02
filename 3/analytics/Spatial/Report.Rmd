@@ -1,0 +1,36 @@
+---
+title: "Spatial Analysis"
+author: "Akinlabi Ajelabi"
+date: "30/06/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Prerequisites
+
+You are going to need to install a few extra packages
+```{r cars}
+# these are packages you will need, but probably already have.
+# Don't bother installing if you already have them
+install.packages(c("ggplot2", "devtools", "dplyr", "stringr"))
+
+# some standard map packages.
+install.packages(c("maps", "mapdata"))
+
+# the github version of ggmap, which recently pulled in a small fix I had
+# for a bug 
+devtools::install_github("dkahle/ggmap")
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
